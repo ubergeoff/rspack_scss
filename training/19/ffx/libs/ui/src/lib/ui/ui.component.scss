@@ -1,0 +1,9 @@
+@use 'breakpoints';
+
+.some-class {
+  @include respond-to('gt-sm') {
+    color: red;
+  }
+}
+
+

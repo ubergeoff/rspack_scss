@@ -1,0 +1,43 @@
+$breakpoints: (
+    'gt-xsm': (
+        min-width: 365px
+    ),
+    'gt-sm': (
+        min-width: 640px
+    ),
+    'gt-med': (
+        min-width: 992px
+    ),
+    'gt-lg': (
+        min-width: 1200px
+    ),
+    'lt-xsm': (
+        max-width: 365px
+    ),
+    'lt-sm': (
+        max-width: 640px
+    ),
+    'lt-med': (
+        max-width: 992px
+    ),
+    'lt-lg': (
+        max-width: 1200px
+    )
+) !default;
+/// Mixin to manage responsive breakpoints
+/// @param {String} $breakpoint - Breakpoint name
+/// @require $breakpoints
+@mixin respond-to($breakpoint) {
+    // If the key exists in the map
+    @if map-has-key($breakpoints, $breakpoint) {
+        // Prints a media query based on the value
+        @media #{inspect(map-get($breakpoints, $breakpoint))} {
+            @content;
+        }
+    }
+    // If the key doesn't exist in the map
+    @else {
+        @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Available breakpoints are: #{map-keys($breakpoints)}.";
+    }
+}
