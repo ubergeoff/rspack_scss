@@ -1,4 +1,8 @@
+/*
+@import 'breakpoints';  <= If you use this - then it will work fine
+*/
 @use 'breakpoints';
+
 
 .some-class {
   @include respond-to('gt-sm') {
